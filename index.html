@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="veiwport" content="width=device-width, intitial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <title></title>
+    </head>  
+
+    <body>
+        <div id="sidenav" class="sidenav">
+            <div href="javascript:void(0)" class="closebtn" onclick="close_nav()">&times;</div>
+            <div id="list" class="notelist">
+            </div>
+            <div onclick="add_list()"  class="note add-note">+ List</div>
+        </div>
+
+        <div id="dropdown" class="hide">
+            <div onclick="open_colors()">Color Mode</div>
+            <div>Vanish Notes</div>
+            <div>24 Hour Limit</div>
+        </div>
+
+        <div class="color-picker hide">
+            <div onclick="data_theme('light')">light</div>
+            <div onclick="data_theme('dark')">dark</div>
+            <div onclick="data_theme('grey')">grey</div>
+            <div onclick="data_theme('blue')">blue</div>
+            <div onclick="data_theme('yellow')">yellow</div>
+            <div onclick="data_theme('red')">red</div>
+            <div onclick="data_theme('green')">green</div>
+        </div>
+
+
+        <div class="heading">
+            <button onclick="open_nav()" class="menu-btn">
+                <i class="bx bx-menu"></i>
+            </button>
+
+            <div>Notes</div>
+
+            <div id="profile" class="profile-container">                
+                <img onclick="open_dropdown_menu()" src="img/us.webp" class="profile-icon"></img>
+
+            </div>
+        </div>
+
+        <div id="container" class="container">
+            <h1 id="title" contenteditable="true" spellcheck="false">TODO</h1>
+            <input id="input" spellcheck="false" class="input" type="text" placeholder="New Task...">
+            <div class="task_list">
+            </div>
+        </div>
+
+        
+        
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+
+</html>
