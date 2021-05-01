@@ -124,6 +124,12 @@ function update_list(){
     }
 }
 
+function reset_local(){
+    LISTS = {"lists":[], "preferences":{"color-theme":"light"}}
+    INDEX = 0
+    save_local()
+}
+
 //-------------------------LOGIC------------------------
 
 lists = load_local()
