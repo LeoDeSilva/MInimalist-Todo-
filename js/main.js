@@ -144,8 +144,11 @@ if (lists != null){
 if (index != null){
     INDEX = index
 }
+if (lists["lists"].length < 1){
 
-open_list(INDEX)
+}else{
+    open_list(INDEX)
+}
 toggle_class(dropdown, "show", "hide")
 input.addEventListener("keyup",check_enter)
 update_properties()
