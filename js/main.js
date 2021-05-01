@@ -3,6 +3,7 @@ let input = document.getElementById("input")
 let task_list = document.querySelector(".task_list")
 let list_list = document.getElementById("list")
 let colors = document.querySelector(".color-picker")
+
 let LISTS = {"lists":[], "preferences":{"color-theme":"light"}}
 let INDEX = 0
 
@@ -15,6 +16,10 @@ function save_local(){
 
 function load_local(){
     return JSON.parse(localStorage.getItem("lists"))
+}
+
+function load_index(){
+    return localStorage.getItem("index")
 }
 
 function check(e){
@@ -70,26 +75,11 @@ function open_colors(){
     }
 }
 
-function handle_click(){
-    $(window).click(function() {
-        toggle_class(dropdown, "show", "hide")
-    });
-
-    $('#dropdown').click(function(event){
-    event.stopPropagation();
-    });
-    $('#profile').click(function(event){
-    event.stopPropagation();
-    });
-    $('#open_preview').click(function(event){
-    event.stopPropagation();
-    });
-}
-
 function save_list(lists){
     content = document.getElementById("container").innerHTML
     title = document.getElementById("title").innerHTML
     lists[INDEX] = {"title":title, "content":content}
+    save_local()
 }
 
 var check_enter = function (event){
@@ -136,12 +126,25 @@ function update_list(){
 
 //-------------------------LOGIC------------------------
 
+lists = load_local()
+index = load_index()
+console.log(load_index())
+
+if (lists != null){
+    LISTS = load_local()
+    data_theme(LISTS["preferences"]["color-theme"])
+}
+
+if (index != null){
+    INDEX = index
+}
+
+open_list(INDEX)
 toggle_class(dropdown, "show", "hide")
 input.addEventListener("keyup",check_enter)
-
-//handle_click()
 update_properties()
 
-setInterval(function(){
-    save_list(LISTS["lists"])
+setInterval(function(){ 
+    save_list(LISTS["lists"]) 
 }, 500)
+
